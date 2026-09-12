@@ -1,38 +1,59 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#020914">
-  <meta name="description" content="Edgar Salinas — Técnico de soporte informático para particulares.">
-  <title>Edgar Salinas | Soporte informático</title>
-  <style>
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:#020914}
-    body{display:flex;justify-content:center;min-height:100vh}
-    .card{position:relative;width:min(1024px,100vw);line-height:0}
-    .card img{display:block;width:100%;height:auto}
-    .hotspot{position:absolute;display:block;background:transparent;border:0;outline:0;cursor:pointer}
-    .whatsapp{left:7%;top:60.9%;width:86%;height:4.45%;z-index:10}
-    .call{left:7%;top:65.8%;width:86%;height:4.45%;z-index:10}
-    /* IMPORTANTE: estas zonas están calculadas sobre la imagen actual de 1024x1536. */
-    .remote{left:7%;top:70.75%;width:86%;height:4.45%;z-index:100}
-    .contact{left:7%;top:75.75%;width:86%;height:4.45%;z-index:20}
-    .qr{left:11.5%;top:81.0%;width:19.0%;height:10.5%;z-index:10}
-    .mail{left:34%;top:81.0%;width:56%;height:10.5%;z-index:10}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#020914">
+<meta name="description" content="Edgar Salinas — Técnico de soporte informático para particulares.">
+<title>Edgar Salinas | Soporte informático</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#020914}
+body{display:flex;justify-content:center;min-height:100vh}
+.card{position:relative;width:min(1024px,100vw);line-height:0}
+.card img{display:block;width:100%;height:auto}
+.hotspot{
+ position:absolute;display:block;background:transparent;border:0;outline:0;
+ cursor:pointer;z-index:10;
+}
+.whatsapp{left:7%;top:60.85%;width:86%;height:4.55%}
+.call{left:7%;top:65.80%;width:86%;height:4.55%}
+.remote{left:7%;top:70.72%;width:86%;height:4.62%;z-index:1000}
+.contact{left:7%;top:75.72%;width:86%;height:4.62%;z-index:20}
+.qr{left:11%;top:81.0%;width:20%;height:10.8%;z-index:10}
+.mail{left:34%;top:81.0%;width:56%;height:10.8%;z-index:10}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
 </head>
 <body>
-  <main class="card" aria-label="Tarjeta digital de Edgar Salinas">
-    <img src="tarjeta-aprobada-QR-verificado.png" alt="Tarjeta digital de Edgar Salinas, técnico de soporte informático para particulares">
+<main class="card" id="card" aria-label="Tarjeta digital de Edgar Salinas">
+<img src="tarjeta-final-QR-unico-verificado.png" alt="Tarjeta digital de Edgar Salinas, técnico de soporte informático para particulares">
 
-    <a class="hotspot whatsapp" href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><span class="sr-only">WhatsApp</span></a>
-    <a class="hotspot call" href="tel:+34646858922" aria-label="Llamar a Edgar Salinas"><span class="sr-only">Llamar</span></a>
-    <a class="hotspot remote" href="./ayuda-remota.html" aria-label="Solicitar ayuda remota"><span class="sr-only">Ayuda remota</span></a>
-    <a class="hotspot contact" href="./contact.vcf" download="Edgar-Salinas.vcf" aria-label="Guardar contacto"><span class="sr-only">Guardar contacto</span></a>
-    <a class="hotspot qr" href="./" aria-label="Abrir tarjeta digital"><span class="sr-only">Código QR</span></a>
-    <a class="hotspot mail" href="mailto:informaticoparaparticulares@gmail.com?subject=Solicitud%20de%20soporte%20inform%C3%A1tico" aria-label="Enviar email"><span class="sr-only">Email</span></a>
-  </main>
+<a class="hotspot whatsapp" href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><span class="sr-only">WhatsApp</span></a>
+<a class="hotspot call" href="tel:+34646858922" aria-label="Llamar a Edgar Salinas"><span class="sr-only">Llamar</span></a>
+<a class="hotspot remote" id="remote" href="ayuda-remota.html" aria-label="Solicitar ayuda remota"><span class="sr-only">Ayuda remota</span></a>
+<a class="hotspot contact" id="contact" href="contact.vcf" download="Edgar-Salinas.vcf" aria-label="Guardar contacto"><span class="sr-only">Guardar contacto</span></a>
+<a class="hotspot qr" href="./" aria-label="Abrir tarjeta digital"><span class="sr-only">Código QR</span></a>
+<a class="hotspot mail" href="mailto:informaticoparaparticulares@gmail.com?subject=Solicitud%20de%20soporte%20inform%C3%A1tico" aria-label="Enviar email"><span class="sr-only">Email</span></a>
+</main>
+
+<script>
+/* Refuerzo: el clic se decide por la posición sobre la tarjeta.
+   Así AYUDA REMOTA nunca puede caer en GUARDAR CONTACTO. */
+document.getElementById('card').addEventListener('click', function(e){
+  const r=this.getBoundingClientRect();
+  const y=(e.clientY-r.top)/r.height*100;
+  if(y>=70.55 && y<75.55){
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href='ayuda-remota.html';
+  } else if(y>=75.55 && y<80.55){
+    e.preventDefault();
+    e.stopPropagation();
+    const a=document.getElementById('contact');
+    window.location.href=a.href;
+  }
+}, true);
+</script>
 </body>
 </html>
