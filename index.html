@@ -1,59 +1,133 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#020914">
-<meta name="description" content="Edgar Salinas — Técnico de soporte informático para particulares.">
-<title>Edgar Salinas | Soporte informático</title>
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#020914}
-body{display:flex;justify-content:center;min-height:100vh}
-.card{position:relative;width:min(1024px,100vw);line-height:0}
-.card img{display:block;width:100%;height:auto}
-.hotspot{
- position:absolute;display:block;background:transparent;border:0;outline:0;
- cursor:pointer;z-index:10;
-}
-.whatsapp{left:7%;top:60.85%;width:86%;height:4.55%}
-.call{left:7%;top:65.80%;width:86%;height:4.55%}
-.remote{left:7%;top:70.72%;width:86%;height:4.62%;z-index:1000}
-.contact{left:7%;top:75.72%;width:86%;height:4.62%;z-index:20}
-.qr{left:11%;top:81.0%;width:20%;height:10.8%;z-index:10}
-.mail{left:34%;top:81.0%;width:56%;height:10.8%;z-index:10}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b14">
+  <meta name="description" content="Ayuda remota de Edgar Salinas — soporte informático para particulares.">
+  <title>Ayuda remota | Edgar Salinas</title>
+  <style>
+    :root{
+      --bg:#030812;
+      --panel:#091525;
+      --panel2:#0c1b2d;
+      --cyan:#22d3ee;
+      --blue:#38bdf8;
+      --green:#20c997;
+      --text:#f4fbff;
+      --muted:#a8bac9;
+      --line:rgba(56,189,248,.18);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; color:var(--text);
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 50% -10%,rgba(34,211,238,.15),transparent 38%),
+        radial-gradient(circle at 0 60%,rgba(56,189,248,.06),transparent 30%),
+        linear-gradient(160deg,#02050b,#07111f 55%,#030812);
+    }
+    .wrap{width:min(720px,100%);margin:auto;padding:24px 16px 34px}
+    .top{text-align:center;padding:10px 8px 22px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 13px;
+      border:1px solid rgba(34,211,238,.25);border-radius:999px;
+      background:rgba(34,211,238,.07);color:var(--cyan);
+      font-size:.78rem;font-weight:800;letter-spacing:.08em;
+    }
+    h1{margin:18px 0 9px;font-size:clamp(2rem,7vw,3rem);line-height:1.05;letter-spacing:.02em;color:var(--cyan)}
+    .intro{margin:0 auto;max-width:590px;color:var(--muted);font-size:1.02rem;line-height:1.65}
+    .card{
+      padding:25px 20px;border:1px solid var(--line);border-radius:24px;
+      background:linear-gradient(145deg,rgba(12,27,45,.96),rgba(6,15,27,.96));
+      box-shadow:0 20px 60px rgba(0,0,0,.32),0 0 38px rgba(34,211,238,.055);
+    }
+    .video{
+      min-height:250px;border-radius:19px;border:1px dashed rgba(34,211,238,.28);
+      background:
+        radial-gradient(circle at 50% 35%,rgba(34,211,238,.10),transparent 35%),
+        linear-gradient(145deg,#081525,#050c16);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;padding:28px;
+    }
+    .play{
+      width:70px;height:70px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.38);
+      color:var(--cyan);font-size:29px;margin-bottom:15px;
+      box-shadow:0 0 30px rgba(34,211,238,.10);
+    }
+    .video h2{margin:0 0 7px;font-size:1.25rem}
+    .video p{margin:0;color:var(--muted);line-height:1.5}
+    .coming{
+      margin-top:12px;font-size:.76rem;font-weight:800;letter-spacing:.08em;
+      color:#7f98aa;text-transform:uppercase;
+    }
+    .security{
+      margin:20px 0 5px;padding:16px;border-radius:16px;
+      background:rgba(32,201,151,.055);border:1px solid rgba(32,201,151,.18);
+    }
+    .security strong{color:#65e6bd}
+    .security p{margin:5px 0 0;color:var(--muted);line-height:1.5;font-size:.93rem}
+    .steps{display:grid;gap:10px;margin:20px 0}
+    .step{display:flex;gap:13px;align-items:flex-start;padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06)}
+    .num{
+      flex:0 0 31px;height:31px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.25);
+      color:var(--cyan);font-weight:900;font-size:.85rem;
+    }
+    .step b{display:block;margin:2px 0 3px}
+    .step span{display:block;color:var(--muted);font-size:.9rem;line-height:1.4}
+    .actions{display:grid;gap:11px;margin-top:22px}
+    .btn{
+      min-height:56px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+      text-decoration:none;font-weight:900;letter-spacing:.02em;
+      transition:transform .15s ease,filter .15s ease;
+    }
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+    .whatsapp{color:#fff;background:#075e57;border:1px solid rgba(45,212,191,.45);box-shadow:0 8px 24px rgba(7,94,87,.20)}
+    .back{color:#e8f7ff;background:#122438;border:1px solid rgba(56,189,248,.20)}
+    .note{text-align:center;color:#718899;font-size:.76rem;line-height:1.45;margin:17px 5px 0}
+    .brand{text-align:center;margin-top:22px;color:#61798a;font-size:.78rem}
+    .brand b{color:#8da7b8}
+  </style>
 </head>
 <body>
-<main class="card" id="card" aria-label="Tarjeta digital de Edgar Salinas">
-<img src="tarjeta-aprobada-QR-verificado.png" alt="Tarjeta digital de Edgar Salinas, técnico de soporte informático para particulares">
+  <main class="wrap">
+    <header class="top">
+      <div class="badge">💻 SOPORTE A PARTICULARES</div>
+      <h1>AYUDA REMOTA</h1>
+      <p class="intro">¿Necesitas ayuda con tu ordenador sin desplazarte de casa? Te acompaño paso a paso para solucionar el problema a distancia.</p>
+    </header>
 
-<a class="hotspot whatsapp" href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><span class="sr-only">WhatsApp</span></a>
-<a class="hotspot call" href="tel:+34646858922" aria-label="Llamar a Edgar Salinas"><span class="sr-only">Llamar</span></a>
-<a class="hotspot remote" id="remote" href="ayuda-remota.html" aria-label="Solicitar ayuda remota"><span class="sr-only">Ayuda remota</span></a>
-<a class="hotspot contact" id="contact" href="contact.vcf" download="Edgar-Salinas.vcf" aria-label="Guardar contacto"><span class="sr-only">Guardar contacto</span></a>
-<a class="hotspot qr" href="./" aria-label="Abrir tarjeta digital"><span class="sr-only">Código QR</span></a>
-<a class="hotspot mail" href="mailto:informaticoparaparticulares@gmail.com?subject=Solicitud%20de%20soporte%20inform%C3%A1tico" aria-label="Enviar email"><span class="sr-only">Email</span></a>
-</main>
+    <section class="card">
+      <div class="video" aria-label="Espacio reservado para el vídeo explicativo">
+        <div class="play">▶</div>
+        <h2>¿Cómo funciona la ayuda remota?</h2>
+        <p>Aquí irá un vídeo corto donde podrás ver, de forma sencilla, cómo será la conexión.</p>
+        <div class="coming">Vídeo explicativo próximamente</div>
+      </div>
 
-<script>
-/* Refuerzo: el clic se decide por la posición sobre la tarjeta.
-   Así AYUDA REMOTA nunca puede caer en GUARDAR CONTACTO. */
-document.getElementById('card').addEventListener('click', function(e){
-  const r=this.getBoundingClientRect();
-  const y=(e.clientY-r.top)/r.height*100;
-  if(y>=70.55 && y<75.55){
-    e.preventDefault();
-    e.stopPropagation();
-    window.location.href='ayuda-remota.html';
-  } else if(y>=75.55 && y<80.55){
-    e.preventDefault();
-    e.stopPropagation();
-    const a=document.getElementById('contact');
-    window.location.href=a.href;
-  }
-}, true);
-</script>
+      <div class="security">
+        <strong>🔒 Tú mantienes el control</strong>
+        <p>La conexión se realiza con tu autorización. Te explicaré cada paso antes de comenzar.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step"><div class="num">1</div><div><b>Me escribes por WhatsApp</b><span>Me cuentas qué problema tienes y acordamos la asistencia.</span></div></div>
+        <div class="step"><div class="num">2</div><div><b>Te explico qué hacer</b><span>Te guío para abrir la herramienta de asistencia de Windows.</span></div></div>
+        <div class="step"><div class="num">3</div><div><b>Autorizas la conexión</b><span>Tú decides cuándo permitir la asistencia y puedes finalizarla.</span></div></div>
+        <div class="step"><div class="num">4</div><div><b>Nos ponemos manos a la obra</b><span>Te ayudo a revisar y solucionar el problema de tu ordenador.</span></div></div>
+      </div>
+
+      <div class="actions">
+        <a class="btn whatsapp" href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20necesito%20ayuda%20remota%20con%20mi%20ordenador." target="_blank" rel="noopener">💬 SOLICITAR AYUDA POR WHATSAPP</a>
+        <a class="btn back" href="./index.html">← VOLVER A LA TARJETA</a>
+      </div>
+
+      <p class="note">La ayuda remota se realiza mediante las herramientas de asistencia de Windows. No se inicia ninguna conexión sin tu autorización.</p>
+    </section>
+
+    <div class="brand"><b>Edgar Salinas</b> · Técnico de soporte informático</div>
+  </main>
 </body>
 </html>
