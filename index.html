@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover">
+      content="width=device-width, initial-scale=1">
 
-<meta name="theme-color" content="#020914">
+<meta name="theme-color"
+      content="#020914">
 
 <meta name="description"
       content="Edgar Salinas — Técnico de soporte informático para particulares.">
@@ -14,171 +15,95 @@
 <title>Edgar Salinas | Soporte informático</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
-
 html,
-body{
-    margin:0;
-    padding:0;
-    background:#020914;
+body {
+    margin: 0;
+    padding: 0;
+    background: #020914;
 }
 
-body{
-    width:100%;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
+body {
+    width: 100%;
+    text-align: center;
 }
 
-/* TARJETA */
-.card{
-    position:relative;
-    width:100%;
-    max-width:1024px;
+.card {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
 }
 
-/* IMAGEN */
-.card img{
-    display:block;
-    width:100%;
-    height:auto;
-    margin:0;
-    padding:0;
-    border:0;
-    user-select:none;
-    -webkit-user-select:none;
-    -webkit-user-drag:none;
+.card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border: 0;
 }
-
-/* TODAS LAS ZONAS */
-.hotspot{
-    position:absolute;
-    display:block;
-    padding:0;
-    margin:0;
-    border:0;
-    background:transparent;
-    outline:none;
-    z-index:20;
-
-    cursor:pointer;
-
-    -webkit-tap-highlight-color:transparent;
-    touch-action:manipulation;
-}
-
-/*
-   COORDENADAS SOBRE LA IMAGEN 1024 x 1536
-
-   Las cuatro barras ocupan aproximadamente:
-   WhatsApp       935 - 1004
-   Llamar        1010 - 1079
-   Ayuda remota  1086 - 1156
-   Contacto      1163 - 1233
-*/
-
-/* WHATSAPP */
-.whatsapp{
-    left:7%;
-    top:60.87%;
-    width:86%;
-    height:4.55%;
-}
-
-/* LLAMAR */
-.call{
-    left:7%;
-    top:65.75%;
-    width:86%;
-    height:4.55%;
-}
-
-/* AYUDA REMOTA */
-.remote{
-    left:7%;
-    top:70.70%;
-    width:86%;
-    height:4.62%;
-}
-
-/* GUARDAR CONTACTO */
-.contact{
-    left:7%;
-    top:75.70%;
-    width:86%;
-    height:4.62%;
-}
-
-/* QR: SOLO EL QR */
-.qr{
-    left:12.8%;
-    top:82.2%;
-    width:16%;
-    height:9%;
-}
-
 </style>
 </head>
 
 <body>
 
-<main class="card">
+<div class="card">
 
-    <!--
-      El ?v=3 obliga al móvil a cargar la versión actual
-      de la imagen y evita problemas de caché.
-    -->
-    <img
-        src="tarjeta-aprobada-QR-verificado.png?v=3"
-        alt="Tarjeta digital de Edgar Salinas, técnico de soporte informático para particulares"
-    >
+<img
+    src="tarjeta-aprobada-QR-verificado.png?v=4"
+    width="1024"
+    height="1536"
+    usemap="#tarjeta"
+    alt="Tarjeta digital de Edgar Salinas"
+>
+
+<map name="tarjeta">
 
     <!-- WHATSAPP -->
-    <a
-        class="hotspot whatsapp"
+    <area
+        shape="rect"
+        coords="98,936,926,1004"
         href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica."
         target="_blank"
         rel="noopener"
-        aria-label="Contactar por WhatsApp">
-    </a>
+        alt="WhatsApp"
+    >
 
     <!-- LLAMAR -->
-    <a
-        class="hotspot call"
+    <area
+        shape="rect"
+        coords="98,1011,926,1081"
         href="tel:+34646858922"
-        aria-label="Llamar a Edgar Salinas">
-    </a>
+        alt="Llamar"
+    >
 
     <!-- AYUDA REMOTA -->
-    <a
-        class="hotspot remote"
+    <area
+        shape="rect"
+        coords="98,1089,926,1159"
         href="ayuda-remota.html"
-        aria-label="Ayuda remota">
-    </a>
+        alt="Ayuda remota"
+    >
 
     <!-- GUARDAR CONTACTO -->
-    <a
-        class="hotspot contact"
+    <area
+        shape="rect"
+        coords="98,1167,926,1237"
         href="contact.vcf"
         download="Edgar-Salinas.vcf"
-        aria-label="Guardar contacto">
-    </a>
+        alt="Guardar contacto"
+    >
 
-    <!-- QR -->
-    <a
-        class="hotspot qr"
+    <!-- QR / ESCANÉAME -->
+    <area
+        shape="rect"
+        coords="130,1250,320,1415"
         href="./"
-        aria-label="Abrir tarjeta digital">
-    </a>
+        alt="Abrir tarjeta digital"
+    >
 
-</main>
+</map>
+
+</div>
 
 </body>
 </html>
- 
-
 
