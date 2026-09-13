@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1">
+      content="width=device-width, initial-scale=1,
+      viewport-fit=cover">
 
-<meta name="theme-color"
-      content="#020914">
+<meta name="theme-color" content="#020914">
 
 <meta name="description"
       content="Edgar Salinas — Técnico de soporte informático para particulares.">
@@ -15,31 +15,64 @@
 <title>Edgar Salinas | Soporte informático</title>
 
 <style>
+
 html,
 body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    min-height: 100%;
     background: #020914;
 }
 
 body {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .card {
+    position: relative;
     width: 100%;
     max-width: 1024px;
-    margin: 0 auto;
+    aspect-ratio: 1024 / 1536;
+    overflow: hidden;
 }
 
 .card img {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
-    height: auto;
-    margin: 0 auto;
-    border: 0;
+    height: 100%;
+    object-fit: fill;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 }
+
+.links {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.links a {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Evita que el SVG interfiera fuera de las zonas */
+.links {
+    pointer-events: none;
+}
+
+.links a {
+    pointer-events: auto;
+}
+
 </style>
 </head>
 
@@ -47,63 +80,102 @@ body {
 
 <div class="card">
 
-<img
-    src="tarjeta-aprobada-QR-verificado.png?v=4"
-    width="1024"
-    height="1536"
-    usemap="#tarjeta"
-    alt="Tarjeta digital de Edgar Salinas"
->
-
-<map name="tarjeta">
-
-    <!-- WHATSAPP -->
-    <area
-        shape="rect"
-        coords="98,936,926,1004"
-        href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica."
-        target="_blank"
-        rel="noopener"
-        alt="WhatsApp"
+    <img
+        src="tarjeta-aprobada-QR-verificado.png?v=5"
+        width="1024"
+        height="1536"
+        alt="Tarjeta digital de Edgar Salinas"
     >
 
-    <!-- LLAMAR -->
-    <area
-        shape="rect"
-        coords="98,1011,926,1081"
-        href="tel:+34646858922"
-        alt="Llamar"
+    <svg
+        class="links"
+        viewBox="0 0 1024 1536"
+        preserveAspectRatio="none"
+        aria-label="Enlaces de la tarjeta"
     >
 
-    <!-- AYUDA REMOTA -->
-    <area
-        shape="rect"
-        coords="98,1089,926,1159"
-        href="ayuda-remota.html"
-        alt="Ayuda remota"
-    >
+        <!-- WHATSAPP -->
+        <a
+            href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica."
+            target="_blank"
+            rel="noopener"
+            aria-label="WhatsApp"
+        >
+            <rect
+                x="69"
+                y="934"
+                width="880"
+                height="72"
+                fill="transparent"
+            />
+        </a>
 
-    <!-- GUARDAR CONTACTO -->
-    <area
-        shape="rect"
-        coords="98,1167,926,1237"
-        href="contact.vcf"
-        download="Edgar-Salinas.vcf"
-        alt="Guardar contacto"
-    >
 
-    <!-- QR / ESCANÉAME -->
-    <area
-        shape="rect"
-        coords="130,1250,320,1415"
-        href="./"
-        alt="Abrir tarjeta digital"
-    >
+        <!-- LLAMAR -->
+        <a
+            href="tel:+34646858922"
+            aria-label="Llamar a Edgar Salinas"
+        >
+            <rect
+                x="69"
+                y="1008"
+                width="880"
+                height="73"
+                fill="transparent"
+            />
+        </a>
 
-</map>
+
+        <!-- AYUDA REMOTA -->
+        <a
+            href="ayuda-remota.html"
+            aria-label="Ayuda remota"
+        >
+            <rect
+                x="69"
+                y="1083"
+                width="880"
+                height="75"
+                fill="transparent"
+            />
+        </a>
+
+
+        <!-- GUARDAR CONTACTO -->
+        <a
+            href="contact.vcf"
+            download="Edgar-Salinas.vcf"
+            aria-label="Guardar contacto"
+        >
+            <rect
+                x="69"
+                y="1160"
+                width="880"
+                height="77"
+                fill="transparent"
+            />
+        </a>
+
+
+        <!-- SOLO EL QR -->
+        <a
+            href="./"
+            aria-label="Abrir tarjeta digital"
+        >
+            <rect
+                x="85"
+                y="1245"
+                width="125"
+                height="165"
+                fill="transparent"
+            />
+        </a>
+
+    </svg>
 
 </div>
 
 </body>
 </html>
 
+ 
