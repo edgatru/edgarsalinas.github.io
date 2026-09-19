@@ -1,9 +1,10 @@
 BEGIN:VCARD
 VERSION:3.0
-FN:Edgar Salinas
 N:Salinas;Edgar;;;
-TITLE:Técnico de soporte informático
-TEL;TYPE=CELL:+34646858922
-EMAIL:informaticoparaparticulares@gmail.com
-NOTE:Soporte informático para particulares
+FN:Edgar Salinas
+TITLE:Técnico de soporte informático para particulares
+TEL;TYPE=CELL,VOICE:+34646858922
+EMAIL;TYPE=INTERNET:informaticoparaparticulares@gmail.com
+URL:https://edgatru.github.io/edgarsalinas.github.io/
+NOTE:Soporte informático para particulares. Página web con WhatsApp, llamada y ayuda remota.
 END:VCARD
