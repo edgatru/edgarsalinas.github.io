@@ -1,0 +1,33 @@
+<!-- Botón para compartir la página web -->
+<button id="shareWeb" type="button" class="share-web">Compartir mi web</button>
+<style>
+.share-web{display:block;width:100%;max-width:420px;margin:12px auto;padding:14px 18px;
+border:0;border-radius:14px;background:#b88b36;color:#101820;font:600 16px/1.2 system-ui,sans-serif;cursor:pointer}
+.share-web:focus-visible{outline:3px solid #152b3b;outline-offset:3px}
+</style>
+<script>
+(() => {
+  const pageUrl = "https://edgatru.github.io/edgarsalinas.github.io/";
+  const shareData = {
+    title: "Edgar Salinas | Soporte informático",
+    text: "Te comparto la página de Edgar Salinas: soporte informático para particulares.",
+    url: pageUrl
+  };
+  document.getElementById("shareWeb")?.addEventListener("click", async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(pageUrl);
+        alert("Enlace copiado. Ya puedes pegarlo donde quieras.");
+      } else {
+        window.open("https://wa.me/?text=" + encodeURIComponent(shareData.text + " " + pageUrl), "_blank", "noopener");
+      }
+    } catch (err) {
+      if (err.name !== "AbortError") {
+        window.open("https://wa.me/?text=" + encodeURIComponent(shareData.text + " " + pageUrl), "_blank", "noopener");
+      }
+    }
+  });
+})();
+</script>
