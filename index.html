@@ -5,70 +5,119 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#020914">
 <title>Edgar Salinas | Soporte informático</title>
+
 <style>
-html,body{margin:0;padding:0;background:#020914}
-body{display:flex;justify-content:center}
-.card{width:100%;max-width:1024px;margin:0}
-.card img{display:block;width:100%;height:auto}
-a{display:block;line-height:0;-webkit-tap-highlight-color:transparent}
+html,body{
+  margin:0;
+  padding:0;
+  background:#020914;
+}
+
+body{
+  display:flex;
+  justify-content:center;
+}
+
+.card{
+  width:100%;
+  max-width:1024px;
+  margin:0;
+}
+
+.card img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+a{
+  display:block;
+  line-height:0;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.share-area{
+  padding:18px 16px 28px;
+  text-align:center;
+}
+
+.share-web{
+  display:inline-block;
+  padding:14px 24px;
+  border:1px solid #d8b76a;
+  border-radius:12px;
+  background:#d8b76a;
+  color:#020914;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
 </style>
 </head>
+
 <body>
 <div class="card">
+
   <img src="top.png" alt="Tarjeta digital de Edgar Salinas">
-  <a href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica." target="_blank" rel="noopener" aria-label="WhatsApp">
+
+  <a href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica."
+     target="_blank" rel="noopener" aria-label="WhatsApp">
     <img src="whatsapp.png" alt="">
   </a>
+
   <a href="tel:+34646858922" aria-label="Llamar">
     <img src="llamar.png" alt="">
   </a>
+
   <a href="ayuda-remota.html" aria-label="Ayuda remota">
     <img src="remota.png" alt="">
   </a>
+
   <a href="contact.vcf" download="Edgar-Salinas.vcf" aria-label="Guardar contacto">
     <img src="contacto.png" alt="">
   </a>
+
   <img src="bottom.png" alt="">
-    <div style="padding:16px;background:#020914;text-align:center;">
-    <button id="shareWeb" type="button"
-      style="padding:14px 22px;border:0;border-radius:14px;
-      background:#b88b36;color:#101820;font-weight:600;
-      font-size:16px;cursor:pointer;">
+
+  <!-- Botón para compartir la web -->
+  <div class="share-area">
+    <button type="button" class="share-web" id="shareWeb">
       Compartir mi web
     </button>
   </div>
+
 </div>
-  <script>
-(() => {
-  const url = "https://edgatru.github.io/edgarsalinas.github.io/";
-  const button = document.getElementById("shareWeb");
 
-  button.addEventListener("click", async () => {
-    const data = {
-      title: "Edgar Salinas | Soporte informático",
-      text: "Te comparto la página de Edgar Salinas, soporte informático para particulares.",
-      url
-    };
+<script>
+const shareButton = document.getElementById("shareWeb");
+const webUrl = "https://edgatru.github.io/edgarsalinas.github.io/";
 
+shareButton.addEventListener("click", async () => {
+  if (navigator.share) {
     try {
-      if (navigator.share) {
-        await navigator.share(data);
-      } else {
-        window.open(
-          "https://wa.me/?text=" + encodeURIComponent(data.text + " " + url),
-          "_blank"
-        );
-      }
+      await navigator.share({
+        title: "Edgar Salinas | Soporte informático",
+        text: "Mi tarjeta digital de soporte informático para particulares",
+        url: webUrl
+      });
     } catch (error) {
       if (error.name !== "AbortError") {
         window.open(
-          "https://wa.me/?text=" + encodeURIComponent(data.text + " " + url),
-          "_blank"
+          "https://wa.me/?text=" + encodeURIComponent(webUrl),
+          "_blank",
+          "noopener"
         );
       }
     }
-  });
-})();
+  } else {
+    window.open(
+      "https://wa.me/?text=" + encodeURIComponent(webUrl),
+      "_blank",
+      "noopener"
+    );
+  }
+});
 </script>
+
 </body>
 </html>
