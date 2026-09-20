@@ -29,6 +29,46 @@ a{display:block;line-height:0;-webkit-tap-highlight-color:transparent}
     <img src="contacto.png" alt="">
   </a>
   <img src="bottom.png" alt="">
+    <div style="padding:16px;background:#020914;text-align:center;">
+    <button id="shareWeb" type="button"
+      style="padding:14px 22px;border:0;border-radius:14px;
+      background:#b88b36;color:#101820;font-weight:600;
+      font-size:16px;cursor:pointer;">
+      Compartir mi web
+    </button>
+  </div>
 </div>
+  <script>
+(() => {
+  const url = "https://edgatru.github.io/edgarsalinas.github.io/";
+  const button = document.getElementById("shareWeb");
+
+  button.addEventListener("click", async () => {
+    const data = {
+      title: "Edgar Salinas | Soporte informático",
+      text: "Te comparto la página de Edgar Salinas, soporte informático para particulares.",
+      url
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(data);
+      } else {
+        window.open(
+          "https://wa.me/?text=" + encodeURIComponent(data.text + " " + url),
+          "_blank"
+        );
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        window.open(
+          "https://wa.me/?text=" + encodeURIComponent(data.text + " " + url),
+          "_blank"
+        );
+      }
+    }
+  });
+})();
+</script>
 </body>
 </html>
