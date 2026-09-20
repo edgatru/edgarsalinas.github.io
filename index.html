@@ -7,50 +7,53 @@
 <title>Edgar Salinas | Soporte informático</title>
 
 <style>
-html,body{
-  margin:0;
-  padding:0;
-  background:#020914;
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #020914;
 }
 
-body{
-  display:flex;
-  justify-content:center;
+body {
+  display: flex;
+  justify-content: center;
 }
 
-.card{
-  width:100%;
-  max-width:1024px;
-  margin:0;
+.card {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0;
 }
 
-.card img{
-  display:block;
-  width:100%;
-  height:auto;
+.card img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-a{
-  display:block;
-  line-height:0;
-  -webkit-tap-highlight-color:transparent;
+a {
+  display: block;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.share-area{
-  padding:18px 16px 28px;
-  text-align:center;
+/* Zona independiente para compartir */
+.share-area {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 18px 16px 28px;
+  text-align: center;
 }
 
-.share-web{
-  display:inline-block;
-  padding:14px 24px;
-  border:1px solid #d8b76a;
-  border-radius:12px;
-  background:#d8b76a;
-  color:#020914;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+.share-web {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid #d8b76a;
+  border-radius: 12px;
+  background: #d8b76a;
+  color: #020914;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -61,7 +64,9 @@ a{
   <img src="top.png" alt="Tarjeta digital de Edgar Salinas">
 
   <a href="https://wa.me/34646858922?text=Hola%20Edgar%2C%20he%20visto%20tu%20tarjeta%20y%20necesito%20ayuda%20inform%C3%A1tica."
-     target="_blank" rel="noopener" aria-label="WhatsApp">
+     target="_blank"
+     rel="noopener"
+     aria-label="WhatsApp">
     <img src="whatsapp.png" alt="">
   </a>
 
@@ -73,13 +78,14 @@ a{
     <img src="remota.png" alt="">
   </a>
 
-  <a href="contact.vcf" download="Edgar-Salinas.vcf" aria-label="Guardar contacto">
+  <a href="contact.vcf"
+     download="Edgar-Salinas.vcf"
+     aria-label="Guardar contacto">
     <img src="contacto.png" alt="">
   </a>
 
   <img src="bottom.png" alt="">
 
-  <!-- Botón para compartir la web -->
   <div class="share-area">
     <button type="button" class="share-web" id="shareWeb">
       Compartir mi web
@@ -90,20 +96,27 @@ a{
 
 <script>
 const shareButton = document.getElementById("shareWeb");
-const webUrl = "https://edgatru.github.io/edgarsalinas.github.io/";
+
+const webUrl =
+  "https://edgatru.github.io/edgarsalinas.github.io/";
 
 shareButton.addEventListener("click", async () => {
+  const shareData = {
+    title: "Edgar Salinas",
+    text: "Edgar Salinas | Soporte informático para particulares",
+    url: webUrl
+  };
+
   if (navigator.share) {
     try {
-      await navigator.share({
-        title: "Edgar Salinas | Soporte informático",
-        text: "Mi tarjeta digital de soporte informático para particulares",
-        url: webUrl
-      });
+      await navigator.share(shareData);
     } catch (error) {
       if (error.name !== "AbortError") {
         window.open(
-          "https://wa.me/?text=" + encodeURIComponent(webUrl),
+          "https://wa.me/?text=" +
+          encodeURIComponent(
+            shareData.text + "\n" + webUrl
+          ),
           "_blank",
           "noopener"
         );
@@ -111,7 +124,10 @@ shareButton.addEventListener("click", async () => {
     }
   } else {
     window.open(
-      "https://wa.me/?text=" + encodeURIComponent(webUrl),
+      "https://wa.me/?text=" +
+      encodeURIComponent(
+        shareData.text + "\n" + webUrl
+      ),
       "_blank",
       "noopener"
     );
@@ -121,3 +137,5 @@ shareButton.addEventListener("click", async () => {
 
 </body>
 </html>
+
+ 
